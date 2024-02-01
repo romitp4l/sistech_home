@@ -1,11 +1,13 @@
 package com.example.sistech_home
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 
 
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -20,8 +22,10 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -66,7 +70,8 @@ fun HomeScreenBody() {
                 messages = 34
             ),
             Services(
-                title = "career",
+                title = "Career " +
+                        "\n",
                 selectedIcon = R.drawable.career,
                 hasBadge = true,
                 messages = 5
@@ -106,19 +111,22 @@ fun HomeScreenBody() {
 fun ServiceCard(service: Services) {
     Card(
         modifier = Modifier
-            .padding(8.dp)
-            .size(150.dp), // Adjusted card size
+            .background(color = Color.White)  // Change the background color
+            .padding(16.dp)
+            .fillMaxWidth(),  // Expand the card to full width
         onClick = { /* Handle click here */ }
     ) {
         Column(
-            modifier = Modifier.padding(start = 16.dp,top = 16.dp)
-                .align(Alignment.CenterHorizontally)
+            modifier = Modifier
+                .padding(16.dp)
+                .fillMaxWidth(),  // Expand the content to full width
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Image(
                 painter = painterResource(id = service.selectedIcon),
-                contentDescription = service.title, // Added content description
-                modifier = Modifier.size(48.dp)
-                    .align(Alignment.CenterHorizontally)
+                contentDescription = service.title,
+                modifier = Modifier
+                    .size(48.dp)
             )
             Spacer(modifier = Modifier.height(8.dp))
             Text(
@@ -126,11 +134,9 @@ fun ServiceCard(service: Services) {
                 fontWeight = FontWeight.Medium,
                 textAlign = TextAlign.Center
             )
-
         }
     }
 }
-
 @Preview(showSystemUi = true, showBackground = true)
 @Composable
 fun PreviewServiceCard() {

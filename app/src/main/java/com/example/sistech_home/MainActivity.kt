@@ -144,7 +144,7 @@ fun MyApp(modifier: Modifier = Modifier) {
                 modifier
                     .padding(10.dp)
                     .clip(RoundedCornerShape(20.dp)),
-                containerColor = Color(0xFFBEECD1)
+                containerColor = Color(0xFFFFFFFF)
             ) {
                 items.forEachIndexed { index, item ->
 
@@ -170,9 +170,15 @@ fun MyApp(modifier: Modifier = Modifier) {
                         },
                         label = { Text(text = item.title) },
                         colors = NavigationBarItemDefaults.colors(
-                            selectedIconColor = Color(0xFF552A27),
-                            selectedTextColor = Color(0xFF64211F),
-                            indicatorColor = Color(0xFF4284D5)
+//                            selectedIconColor = Color(0xFF552A27),
+//                            selectedTextColor = Color(0xFF64211F),
+//                            indicatorColor = Color(0xFF4284D5)
+
+                            selectedIconColor = Color(0xFF552A27), // Selected icon color
+                            unselectedIconColor = Color(0xFF090606), // Unselected icon color
+                            selectedTextColor = Color(0xFF030303), // Selected text color
+                            unselectedTextColor = Color.Gray, // Unselected text color
+                            indicatorColor = Color(0xFFE7D31D) // Indicator color
                         )
                     )
                 }
